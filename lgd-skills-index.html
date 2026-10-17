@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGD Skills Ecosystem Registry · 技能生态聚合索引站</title>
+<meta name="description" content="Open registry of 187 governance-oriented agent skill packages across six practice lines, with public links, filters and machine-readable data. / 面向治理的 187 个智能体技能包公开登记站，按六条业务线组织，提供公开链接、筛选与机器可读数据。">
+<meta property="og:title" content="LGD Skills Ecosystem Registry · 技能生态聚合索引站">
+<meta property="og:description" content="Open registry of 187 governance-oriented agent skill packages across six practice lines. / 187 个治理导向智能体技能包的公开登记站，六条业务线聚合。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhaoxinghua09-cell.github.io/lgd-skills-index/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101E2C'/%3E%3Ctext x='16' y='22' font-size='15' text-anchor='middle' fill='%23B8894A' font-family='Georgia,serif' font-weight='bold'%3EL%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#101E2C; --ink2:#22344A; --paper:#F6F3EC; --card:#FFFFFF;
+  --gold:#B8894A; --line:#D9D3C6; --text:#22303C; --muted:#64748B;
+  --l1:#8A6D9E; --l2:#2E7D5B; --l3:#3D6C9B; --l4:#B8894A; --l5:#B3403A; --l6:#5B6B7A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+a{color:var(--l3)}
+/* ===== Header ===== */
+header{background:var(--ink);color:#E9E4D8;padding:46px 0 38px}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-size:clamp(26px,4.5vw,40px);font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.01em}
+.zh-title{font-size:clamp(16px,2.4vw,21px);color:#C4CFDA;margin-top:8px;font-weight:500}
+.lede{margin-top:16px;max-width:720px;color:#B7C2CD;font-size:14.5px}
+.lede+.lede{margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px}
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:12px 14px}
+.stat b{display:block;font-size:24px;color:#fff;font-variant-numeric:tabular-nums;font-weight:800}
+.stat span{font-size:11.5px;color:#9FB0BF}
+@media(min-width:640px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.stats{grid-template-columns:repeat(6,1fr)}}
+/* ===== Sections ===== */
+section{margin:38px 0}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
+.sec-head h2{font-size:20px;color:var(--ink);font-weight:800}
+.sec-head .zh{font-size:14px;color:var(--muted);font-weight:500}
+.prose{max-width:820px;margin-bottom:8px}
+.prose.en{color:#33475B;font-size:14.5px}
+.prose.zh{color:#5A6B7C;font-size:13.5px;margin-top:6px}
+/* ===== Bars ===== */
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(16,30,44,.05)}
+.brow{display:grid;grid-template-columns:150px 1fr 34px;align-items:center;gap:12px;margin:10px 0;font-size:13px}
+.bl{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btrack{background:#EAE5DA;border-radius:3px;height:16px;overflow:hidden}
+.bfill{display:block;height:100%;border-radius:3px}
+.bv{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink2);font-weight:600}
+/* ===== Controls ===== */
+.controls{display:flex;flex-direction:column;gap:10px;margin:14px 0 12px}
+@media(min-width:760px){.controls{flex-direction:row;align-items:center}}
+#q{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:16px;background:#fff;color:var(--text);min-width:0}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills .pg{font-size:11px;color:var(--muted);padding:6px 4px 0 0}
+.pills button{padding:6px 11px;border:1px solid var(--line);border-radius:99px;background:#fff;color:var(--ink2);font-size:12.5px;cursor:pointer}
+.pills button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pills button:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+/* ===== Table ===== */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+col.c-id{width:74px}col.c-pkg{width:auto}col.c-line{width:110px}col.c-ai{width:86px}col.c-exe{width:86px}col.c-pub{width:150px}
+th{background:var(--ink);color:#E9E4D8;padding:10px 10px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.02em}
+td{padding:9px 10px;border-bottom:1px solid #EFEAE0;vertical-align:top;word-break:break-word}
+tr:last-child td{border-bottom:none}
+td.id{color:var(--gold);font-weight:700;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+td .slug{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);display:block}
+td .nm{color:var(--ink2);font-weight:600;font-size:12.5px}
+.pill{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600}
+.pill.l1{background:#EFE8F5;color:var(--l1)}.pill.l2{background:#E2F0E9;color:var(--l2)}
+.pill.l3{background:#E4EDF6;color:var(--l3)}.pill.l4{background:#F5ECDD;color:#9A7434}
+.pill.l5{background:#F6E4E1;color:var(--l5)}.pill.l6{background:#E8ECF0;color:var(--l6)}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600}
+.b-ok{background:#E2F0E9;color:var(--l2)}.b-no{background:#ECE7DD;color:var(--muted)}
+.pub-link{font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap}
+.pub-link:hover{text-decoration:underline}
+.pub-pending{font-size:11.5px;color:var(--muted)}
+.countline{font-size:12px;color:var(--muted);margin-top:10px}
+/* mobile: table -> cards */
+@media(max-width:639px){
+  .brow{grid-template-columns:128px 1fr 30px;gap:8px}
+  .bl{white-space:normal;line-height:1.25}
+  .tblwrap{overflow:visible;border:none;background:none}
+  table,tbody{display:block;width:100%}
+  thead{display:none}
+  tr{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:8px 12px}
+  td{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #F1ECE2;padding:7px 0;word-break:break-all}
+  td::before{content:attr(data-l);font-size:11px;color:var(--muted);flex:none}
+  td.pub-cell{flex-direction:column;align-items:flex-start}
+  td.pub-cell::before{align-self:flex-start}
+}
+/* ===== Assets ===== */
+.acards{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.acards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.acards{grid-template-columns:repeat(3,1fr)}}
+.acard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;gap:6px}
+.acard .atop{display:flex;align-items:baseline;gap:8px}
+.acard .an{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold);font-weight:700}
+.acard .at{font-weight:700;font-size:13.5px;color:var(--ink2)}
+.acard .aty{display:inline-block;font-size:10.5px;background:#EFEAE1;border-radius:5px;padding:2px 7px;color:var(--muted);align-self:flex-start}
+.acard .aurl{font-family:ui-monospace,Consolas,monospace;font-size:11px;word-break:break-all}
+.acard .ameta{font-size:11px;color:var(--muted)}
+.acard .arepro{font-family:ui-monospace,Consolas,monospace;font-size:11px;background:#F3EFE6;border-radius:6px;padding:6px 8px;word-break:break-all;color:var(--ink2)}
+/* ===== Footer ===== */
+footer{background:var(--ink);color:#8FA0B0;padding:26px 0;margin-top:44px;font-size:12px}
+footer .wrap{display:block}
+footer b{color:#E9E4D8}
+.mono{font-family:ui-monospace,Consolas,monospace}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Open Skills Registry · Data as of 2026-10-16</div>
+    <h1>Skills Ecosystem Registry</h1>
+    <div class="zh-title">LGD 技能生态聚合索引站</div>
+    <p class="lede">A single open entry point to 187 governance-oriented agent skill packages, organised across six practice lines. Every package lists its AI-protocol status, executability, and a public link wherever a verified remote release exists.</p>
+    <p class="lede zh" style="color:#9FB0BF">面向治理学的 Agent 技能生态统一入口：187 个技能包按六条业务线编排。每个包标注 AI 协议达标与可执行状态；凡已核对的公开发布，均给出公开入口链接。</p>
+    <div class="stats" id="statstrip"></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head"><h2>Ecosystem at a glance</h2><span class="zh">体系总览</span></div>
+    <p class="prose en">The registry consolidates <b>187</b> skill packages across six practice lines. All 187 carry a machine-readable SKILL.md contract (when-to-use / usage / workflow); <b>142</b> ship runnable scripts. <b>152</b> packages are already published on a public ModelScope remote; the rest are staged locally and marked pending release. Counts below are computed from the source registry, not estimated.</p>
+    <p class="prose zh">本索引整合六条业务线上的 <b>187</b> 个技能包。全部 187 个均带机器可读的 SKILL.md 协议（何时用 / 用法 / 流程）；<b>142</b> 个含可执行脚本。<b>152</b> 个包已发布至公开 ModelScope 远端，其余本地暂存、待发布。以下数量均由来源注册表实际统计得出。</p>
+    <div class="card" id="bars"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Skill registry</h2><span class="zh">技能注册表</span></div>
+    <p class="prose en">Filter by practice line, AI-readiness or executability, or search by package name, slug or ID. "Public entry" links only where a remote URL was verified in the source index; staged packages show a neutral pending-release badge instead of a guessed link.</p>
+    <p class="prose zh">可按业务线、AI 协议达标状态或可执行状态筛选，也可按包名、slug、ID 关键词搜索。「公开入口」仅在来源索引核对过远端 URL 时给出；本地暂存的包显示中性的「待发布」标记，不推测链接。</p>
+
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search name / slug / ID — 搜索包名 / slug / ID" aria-label="Search skills">
+    </div>
+    <div class="pills" id="fltLine" style="margin-bottom:8px"></div>
+    <div class="pills" style="margin-bottom:8px">
+      <span class="pg">AI protocol</span>
+      <button data-g="ai" data-v="all" class="on">All</button>
+      <button data-g="ai" data-v="yes">Ready</button>
+      <button data-g="ai" data-v="no">Pending</button>
+    </div>
+    <div class="pills" style="margin-bottom:12px">
+      <span class="pg">Executable</span>
+      <button data-g="exe" data-v="all" class="on">All</button>
+      <button data-g="exe" data-v="yes">With scripts</button>
+      <button data-g="exe" data-v="no">Pending</button>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <colgroup><col class="c-id"><col class="c-pkg"><col class="c-line"><col class="c-ai"><col class="c-exe"><col class="c-pub"></colgroup>
+        <thead><tr><th>ID</th><th>Package</th><th>Practice line</th><th>AI protocol</th><th>Executable</th><th>Public entry</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="countline" id="countline"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Public assets</h2><span class="zh">公开资产入口</span></div>
+    <p class="prose en">The entries below are flagged "public-ready" in the source public-asset index (2026-10-16). Each card lists the verified remote URL where one exists, its license and the reproducible command. Entries without a verified remote URL are shown as staged pending registration — no URL is invented.</p>
+    <p class="prose zh">下列条目来自来源《公开资产索引》（2026-10-16）中标记「公开就绪」的资产。每张卡片给出已核对的远端 URL、许可证与可复现命令；未核对到远端 URL 的条目标为「远程地址待登记」，不编造链接。</p>
+    <div class="acards" id="acards"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Collections · 合集</h2><span class="zh">方法论合集入口</span></div>
+    <p class="prose en">Methodology collections: one repo, one lifecycle narrative, sub-skills referenced by slug (never vendored). LGD three-laws badges below are read from the live dashboard (2026-10-17): registered 113/113 · evidenced 112/113 · gated 112/113.</p>
+    <p class="prose zh">方法论合集：单仓、一条生命周期叙事，子技能按 slug 引用（不复制实现）。下列 LGD 三律徽标实读自 2026-10-17 看板：有籍 113/113 · 有证 112/113 · 有门禁 112/113。</p>
+    <div class="acards">
+      <div class="card" style="padding:16px">
+        <h3 style="margin:0 0 4px">GovernanceOS <span class="mono" style="color:#7FA8C9">governanceos</span></h3>
+        <p class="prose en" style="margin:4px 0">One operating system for the full governance lifecycle: SPEC -&gt; PLAN -&gt; GATE -&gt; AUDIT. 9 sub-skills orchestrated by slug (red-team, injection shield, leak scan, desensitization, kill-switch, badge issue/verify, skill &amp; publish gates). 788 cumulative ModelScope downloads across the 9; batch eval 7/7 executed, FAIL 0.</p>
+        <p class="prose zh" style="margin:4px 0">一套操作系统跑通治理全生命周期：SPEC（定界）-&gt; PLAN（防御纵深）-&gt; GATE（两道硬门）-&gt; AUDIT（凭证留痕）。按 slug 编排 9 个子技能。9 子技能累计 788 次 ModelScope 下载；批量评测实跑 7/7、FAIL 0。</p>
+        <p class="mono" style="margin:8px 0">
+          有籍 113/113 ✓ · 有证 112/113 ✓ · 有门禁 112/113 ✓ ·
+          <a href="https://github.com/zhaoxinghua09-cell/governanceos">GitHub repo</a> ·
+          <a href="https://skillpie.cn/skills/governanceos">SkillPie</a> ·
+          <a href="https://clawhub.ai/zhaoxinghua09-cell/governanceos">ClawHub</a>
+        </p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h3 style="margin:0 0 4px">WhoIs agent <span class="mono" style="color:#7FA8C9">whois-agent</span></h3>
+        <p class="prose en" style="margin:4px 0">One install that answers who your agent is, remembers everything across sessions, verifies its identity, and registers every output: REGISTER -&gt; REMEMBER -&gt; VERIFY -&gt; OUTPUT -&gt; EVOLVE. 8 sub-skills orchestrated by slug (boarding-pass, memory-keeper, session-continuity, context-engineering, verified-agent-identity flagship, loop-guard, output-registry, evolution). 1,013 cumulative ModelScope downloads across the 8; all 8 three-laws green (8/8).</p>
+        <p class="prose zh" style="margin:4px 0">一次安装让智能体知道自己是谁、记住跨会话一切、可核验身份、并登记每次产出：登记-&gt;记忆-&gt;验证-&gt;输出-&gt;进化。按 slug 编排 8 个子技能（登机牌/长期记忆/跨会话连续性/上下文工程/身份核验旗舰/失控护栏/产出登记/进化飞轮）。8 子技能累计 1,013 次 ModelScope 下载；8 包三律全绿 8/8。</p>
+        <p class="mono" style="margin:8px 0">
+          有籍 8/8 ✓ · 有证 8/8 ✓ · 有门禁 8/8 ✓ ·
+          <a href="https://github.com/zhaoxinghua09-cell/whois-agent">GitHub repo</a> ·
+          SkillPie (pending CLI) ·
+          ClawHub (pending auth)
+        </p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h3 style="margin:0 0 4px">PromptShield <span class="mono" style="color:#7FA8C9">promptshield</span></h3>
+        <p class="prose en" style="margin:4px 0">One install, your agent stops leaking secrets and obeying injected instructions: RED-TEAM -&gt; SHIELD -&gt; LEAK -&gt; GUARD -&gt; GATE. 9 sub-skills orchestrated by slug (red-team kit [confidential, name only], injection drill/shield, leak scanner, token-disclosure check, tool-call guard, loop guard, MCP security scan, skill admission gate). 718 cumulative ModelScope downloads across the 9; batch eval RPT-20261016-TOP20-B: 9/9 executable PASS, 9/9 reproducible PASS, FAIL 0.</p>
+        <p class="prose zh" style="margin:4px 0">一次安装，让智能体不再泄漏密钥、不再被注入指令带偏：红队演练-&gt;注入防护-&gt;泄漏扫描-&gt;运行时守卫-&gt;准入门禁。按 slug 编排 9 个子技能（红队包[保密仅引用能力名]/注入演练与防护/泄漏扫描/披露检查/工具调用守卫/循环护栏/MCP 安全扫描/技能准入门）。9 子技能累计 718 次 ModelScope 下载；批量评测 RPT-20261016-TOP20-B：9/9 可执行 PASS、9/9 可复现 PASS、FAIL 0。</p>
+        <p class="mono" style="margin:8px 0">
+          有籍 9/9 ✓ · 有证 9/9 ✓ · 有门禁 9/9 ✓ ·
+          <a href="https://github.com/zhaoxinghua09-cell/promptshield">GitHub repo</a> ·
+          <a href="https://skillpie.cn/skills/promptshield">SkillPie</a> ·
+          <a href="https://clawhub.ai/zhaoxinghua09-cell/ai-safety-suite">ClawHub</a>
+        </p>
+      </div>
+    </div>
+  </section>
+    <p class="prose en">Sources: (1) the organisation skill-package registry v1.0 dated 2026-10-16 (187 rows, SK-001 through SK-187); (2) the public-asset index dated 2026-10-16 (24 entries enumerated as public-ready); (3) the on-disk inventory of public ModelScope clones (154 repositories) used to decide which packages carry a verified remote link. AI-ready means the SKILL.md frontmatter contract is complete; executable means the package ships runnable scripts.</p>
+    <p class="prose en">Desensitisation: no local absolute paths, credentials or internal codenames appear on this page. Two packages whose verified remote URL contains an internal codename are displayed under a neutral package name and marked pending release, so that no codename leaks through the link target. Note: the source index's summary line reports 20 public-ready entries, while its own enumeration lists 24 — this page follows the enumeration.</p>
+    <p class="prose zh">数据来源：(1) 组织技能包注册表 v1.0（2026-10-16，187 行，SK-001 至 SK-187）；(2) 公开资产索引（2026-10-16，枚举「公开就绪」24 条）；(3) 公开 ModelScope 克隆的本地清单（154 个仓），用于判定哪些包带已核对的远端链接。AI 协议达标指 SKILL.md frontmatter 契约完整；可执行指包内含可运行脚本。</p>
+    <p class="prose zh">脱敏说明：本页不含任何本地绝对路径、凭据或内部代号。两个已核对远端 URL 中含内部代号的包，以中性包名展示并标注待发布，避免链接目标泄漏代号。另注：来源索引摘要行写「公开就绪 20 条」，但其枚举清单实际列 24 条；本页按枚举清单呈现。</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>LGD Skills Ecosystem Registry</b> · 技能生态聚合索引站<br>
+    Registry as evidence · Data snapshot 2026-10-16 · 187 packages · 6 practice lines
+  </div>
+</footer>
+
+<script>
+var DATA = {"stats": {"total": 187, "lines": {"L1 理论线": 38, "L2 产品线": 22, "L3 评测线": 12, "L4 生态线": 8, "L5 监管线": 13, "L6 基础设施线": 94}, "ai_ready": 187, "executable": 142, "ms_published": 152, "local_ready": 35}, "skills": [{"id": "SK-001", "slug": "a3-law-operational", "name": "a3-law-operational", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/a3-law-operational.git"}, {"id": "SK-002", "slug": "agent-boarding-pass", "name": "agent-boarding-pass", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-boarding-pass.git"}, {"id": "SK-003", "slug": "agent-evolution", "name": "agent-evolution", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-evolution.git"}, {"id": "SK-004", "slug": "agent-kill-switch", "name": "agent-kill-switch", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-kill-switch.git"}, {"id": "SK-005", "slug": "agent-loop-guard", "name": "agent-loop-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-loop-guard.git"}, {"id": "SK-006", "slug": "agent-memory-keeper", "name": "agent-memory-keeper", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-memory-keeper.git"}, {"id": "SK-007", "slug": "agent-output-registry", "name": "agent-output-registry", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-output-registry.git"}, {"id": "SK-008", "slug": "agent-redteam-kit", "name": "agent-redteam-kit", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-redteam-kit.git"}, {"id": "SK-009", "slug": "agent-trace-audit", "name": "agent-trace-audit", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/agent-trace-audit.git"}, {"id": "SK-010", "slug": "ai-brain-learning-memory", "name": "ai-brain-learning-memory", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-brain-learning-memory.git"}, {"id": "SK-011", "slug": "ai-brain-learning-memory-pro", "name": "ai-brain-learning-memory-pro", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-brain-learning-memory-pro.git"}, {"id": "SK-012", "slug": "ai-content-discloser", "name": "ai-content-discloser", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-content-discloser.git"}, {"id": "SK-013", "slug": "ai-cost-cutter", "name": "ai-cost-cutter", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-cost-cutter.git"}, {"id": "SK-014", "slug": "ai-decision-log", "name": "ai-decision-log", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-decision-log.git"}, {"id": "SK-015", "slug": "ai-grader", "name": "ai-grader", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-grader.git"}, {"id": "SK-016", "slug": "ai-incident-log", "name": "ai-incident-log", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-incident-log.git"}, {"id": "SK-017", "slug": "ai-policy-radar", "name": "ai-policy-radar", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-policy-radar.git"}, {"id": "SK-018", "slug": "ai-reply-heuristics", "name": "ai-reply-heuristics", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-reply-heuristics.git"}, {"id": "SK-019", "slug": "ai-usage-policy", "name": "ai-usage-policy", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-usage-policy.git"}, {"id": "SK-020", "slug": "ai-vendor-checklist", "name": "ai-vendor-checklist", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-vendor-checklist.git"}, {"id": "SK-021", "slug": "aml-sentinel", "name": "aml-sentinel", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/aml-sentinel.git"}, {"id": "SK-022", "slug": "anti-cheat-identity", "name": "anti-cheat-identity", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-023", "slug": "api-resilience", "name": "api-resilience", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/api-resilience.git"}, {"id": "SK-024", "slug": "aut-grade-checker", "name": "aut-grade-checker", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-025", "slug": "batch-renamer", "name": "batch-renamer", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/batch-renamer.git"}, {"id": "SK-026", "slug": "bias-auditor", "name": "bias-auditor", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/bias-auditor.git"}, {"id": "SK-027", "slug": "cer-equivalence-check", "name": "cer-equivalence-check", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-028", "slug": "changelog-draft-gen", "name": "changelog-draft-gen", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/changelog-draft-gen.git"}, {"id": "SK-029", "slug": "citation-coverage-check", "name": "citation-coverage-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/citation-coverage-check.git"}, {"id": "SK-030", "slug": "clin-eval-route-picker", "name": "clin-eval-route-picker", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/clin-eval-route-picker.git"}, {"id": "SK-031", "slug": "contest-submission-portal", "name": "contest-submission-portal", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-032", "slug": "context-engineering", "name": "context-engineering", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/context-engineering.git"}, {"id": "SK-033", "slug": "contract-clause-check", "name": "contract-clause-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/contract-clause-check.git"}, {"id": "SK-034", "slug": "contract-interact-checklist", "name": "contract-interact-checklist", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/contract-interact-checklist.git"}, {"id": "SK-035", "slug": "csv-slice", "name": "csv-slice", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/csv-slice.git"}, {"id": "SK-036", "slug": "data-export-check", "name": "data-export-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/data-export-check.git"}, {"id": "SK-037", "slug": "data-grade-checker", "name": "data-grade-checker", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-038", "slug": "data-minimizer", "name": "data-minimizer", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/data-minimizer.git"}, {"id": "SK-039", "slug": "data-rights-guard", "name": "data-rights-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/data-rights-guard.git"}, {"id": "SK-040", "slug": "dir-organizer", "name": "dir-organizer", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/dir-organizer.git"}, {"id": "SK-041", "slug": "disk-scan", "name": "disk-scan", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/disk-scan.git"}, {"id": "SK-042", "slug": "doc-desens-scanner", "name": "doc-desens-scanner", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/doc-desens-scanner.git"}, {"id": "SK-043", "slug": "dpapi-local-vault", "name": "dpapi-local-vault", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/dpapi-local-vault.git"}, {"id": "SK-044", "slug": "dup-finder", "name": "dup-finder", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/dup-finder.git"}, {"id": "SK-045", "slug": "env-var-audit", "name": "env-var-audit", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/env-var-audit.git"}, {"id": "SK-046", "slug": "eu-ai-act-companion", "name": "eu-ai-act-companion", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/eu-ai-act-companion.git"}, {"id": "SK-047", "slug": "eval-bench-builder", "name": "eval-bench-builder", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/eval-bench-builder.git"}, {"id": "SK-048", "slug": "evid-four-check", "name": "evid-four-check", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-049", "slug": "evidence-chain-builder", "name": "evidence-chain-builder", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/evidence-chain-builder.git"}, {"id": "SK-050", "slug": "evidence-chain-check", "name": "evidence-chain-check", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/evidence-chain-check.git"}, {"id": "SK-051", "slug": "fact-check-guard", "name": "fact-check-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/fact-check-guard.git"}, {"id": "SK-052", "slug": "fin-ai-classifier", "name": "fin-ai-classifier", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-053", "slug": "fin-reg-calc", "name": "fin-reg-calc", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/fin-reg-calc.git"}, {"id": "SK-054", "slug": "fund-fee-calc", "name": "fund-fee-calc", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/fund-fee-calc.git"}, {"id": "SK-055", "slug": "gate-policy-generator", "name": "gate-policy-generator", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/gate-policy-generator.git"}, {"id": "SK-056", "slug": "github-api-push-workaround", "name": "github-api-push-workaround", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/github-api-push-workaround.git"}, {"id": "SK-057", "slug": "gov-disclosure-check", "name": "gov-disclosure-check", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/gov-disclosure-check.git"}, {"id": "SK-058", "slug": "hash-check", "name": "hash-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/hash-check.git"}, {"id": "SK-059", "slug": "health-claim-guard", "name": "health-claim-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/health-claim-guard.git"}, {"id": "SK-060", "slug": "hgrac-route-checker", "name": "hgrac-route-checker", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-061", "slug": "import-export-router", "name": "import-export-router", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-062", "slug": "invoice-risk-scan", "name": "invoice-risk-scan", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/invoice-risk-scan.git"}, {"id": "SK-063", "slug": "json-tidy", "name": "json-tidy", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/json-tidy.git"}, {"id": "SK-064", "slug": "judging-rubric-grader", "name": "judging-rubric-grader", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-065", "slug": "kyc-checklist-gen", "name": "kyc-checklist-gen", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/kyc-checklist-gen.git"}, {"id": "SK-066", "slug": "label-compliance-checker", "name": "label-compliance-checker", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-067", "slug": "lgd-badge-issuer", "name": "lgd-badge-issuer", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-badge-issuer.git"}, {"id": "SK-068", "slug": "lgd-badge-verify", "name": "lgd-badge-verify", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-badge-verify.git"}, {"id": "SK-069", "slug": "lgd-certify", "name": "lgd-certify", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-certify.git"}, {"id": "SK-070", "slug": "lgd-crypto-guard", "name": "lgd-crypto-guard", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-crypto-guard.git"}, {"id": "SK-071", "slug": "lgd-fin-guard", "name": "lgd-fin-guard", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-fin-guard.git"}, {"id": "SK-072", "slug": "lgd-gov-guard", "name": "lgd-gov-guard", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-gov-guard.git"}, {"id": "SK-073", "slug": "lgd-law-ethic", "name": "lgd-law-ethic", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-law-ethic.git"}, {"id": "SK-074", "slug": "lgd-three-laws-auditor", "name": "lgd-three-laws-auditor", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/lgd-three-laws-auditor.git"}, {"id": "SK-075", "slug": "loan-rate-disclosure", "name": "loan-rate-disclosure", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/loan-rate-disclosure.git"}, {"id": "SK-076", "slug": "mcp-security-scan", "name": "mcp-security-scan", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/mcp-security-scan.git"}, {"id": "SK-077", "slug": "md-classification-route", "name": "md-classification-route", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-078", "slug": "md-link-audit", "name": "md-link-audit", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/md-link-audit.git"}, {"id": "SK-079", "slug": "model-card-generator", "name": "model-card-generator", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/model-card-generator.git"}, {"id": "SK-080", "slug": "model-router", "name": "model-router", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/model-router.git"}, {"id": "SK-081", "slug": "multi-agent-conductor", "name": "multi-agent-conductor", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/multi-agent-conductor.git"}, {"id": "SK-082", "slug": "non-clinical-checker", "name": "non-clinical-checker", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-083", "slug": "originality-check", "name": "originality-check", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-084", "slug": "output-schema-guard", "name": "output-schema-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/output-schema-guard.git"}, {"id": "SK-085", "slug": "pmcf-evaluation-report-check", "name": "pmcf-evaluation-report-check", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-086", "slug": "pmcf-plan-check", "name": "pmcf-plan-check", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/pmcf-plan-check.git"}, {"id": "SK-087", "slug": "pms-vigilance-intake", "name": "pms-vigilance-intake", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-088", "slug": "problem-set-generator", "name": "problem-set-generator", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-089", "slug": "prompt-compressor", "name": "prompt-compressor", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/prompt-compressor.git"}, {"id": "SK-090", "slug": "prompt-injection-drill", "name": "prompt-injection-drill", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/prompt-injection-drill.git"}, {"id": "SK-091", "slug": "prompt-injection-shield", "name": "prompt-injection-shield", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/prompt-injection-shield.git"}, {"id": "SK-092", "slug": "prompt-leak-scanner", "name": "prompt-leak-scanner", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/prompt-leak-scanner.git"}, {"id": "SK-093", "slug": "prompt-version-control", "name": "prompt-version-control", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/prompt-version-control.git"}, {"id": "SK-094", "slug": "publish-quality-gate", "name": "publish-quality-gate", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/publish-quality-gate.git"}, {"id": "SK-095", "slug": "rag-grounding-guard", "name": "rag-grounding-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/rag-grounding-guard.git"}, {"id": "SK-096", "slug": "recall-decision-checker", "name": "recall-decision-checker", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-097", "slug": "regex-sandbox", "name": "regex-sandbox", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/regex-sandbox.git"}, {"id": "SK-098", "slug": "session-continuity-protocol", "name": "session-continuity-protocol", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/session-continuity-protocol.git"}, {"id": "SK-099", "slug": "skill-admission-gate", "name": "skill-admission-gate", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/skill-admission-gate.git"}, {"id": "SK-100", "slug": "skill-quality-gate", "name": "skill-quality-gate", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/skill-quality-gate.git"}, {"id": "SK-101", "slug": "test-lab-match-check", "name": "test-lab-match-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-102", "slug": "text-replace", "name": "text-replace", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/text-replace.git"}, {"id": "SK-103", "slug": "text-stats", "name": "text-stats", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/text-stats.git"}, {"id": "SK-104", "slug": "token-disclosure-check", "name": "token-disclosure-check", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/token-disclosure-check.git"}, {"id": "SK-105", "slug": "tool-call-guard", "name": "tool-call-guard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/tool-call-guard.git"}, {"id": "SK-106", "slug": "travel-rule-check", "name": "travel-rule-check", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/travel-rule-check.git"}, {"id": "SK-107", "slug": "uas-ops-checker", "name": "uas-ops-checker", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-108", "slug": "udi-db-submission-check", "name": "udi-db-submission-check", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-109", "slug": "udi-format-validator", "name": "udi-format-validator", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/udi-format-validator.git"}, {"id": "SK-110", "slug": "uibc-race-ops", "name": "uibc-race-ops", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-race-ops.git"}, {"id": "SK-111", "slug": "verified-agent-identity", "name": "verified-agent-identity", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/verified-agent-identity.git"}, {"id": "SK-112", "slug": "wallet-address-check", "name": "wallet-address-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/wallet-address-check.git"}, {"id": "SK-113", "slug": "wechat-viral-topic", "name": "wechat-viral-topic", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/wechat-viral-topic.git"}, {"id": "SK-114", "slug": "ai-consciousness", "name": "ai-consciousness", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-consciousness.git"}, {"id": "SK-115", "slug": "ai-governance", "name": "ai-governance", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-governance.git"}, {"id": "SK-116", "slug": "ai-governance-audit-chain", "name": "ai-governance-audit-chain", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-governance-audit-chain.git"}, {"id": "SK-117", "slug": "ai-security-redteam", "name": "ai-security-redteam", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-security-redteam.git"}, {"id": "SK-118", "slug": "artifact-3lock", "name": "artifact-3lock", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/artifact-3lock.git"}, {"id": "SK-119", "slug": "audit-trail-keeper", "name": "audit-trail-keeper", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/audit-trail-keeper.git"}, {"id": "SK-120", "slug": "brain-design-benchmark", "name": "brain-design-benchmark", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/brain-design-benchmark.git"}, {"id": "SK-121", "slug": "cross-session-passphrase", "name": "cross-session-passphrase", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/cross-session-passphrase.git"}, {"id": "SK-122", "slug": "event-fullrun-hardening", "name": "event-fullrun-hardening", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/event-fullrun-hardening.git"}, {"id": "SK-123", "slug": "expert-package-compliance-audit", "name": "expert-package-compliance-audit", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/expert-package-compliance-audit.git"}, {"id": "SK-124", "slug": "gmp2025-transition", "name": "gmp2025-transition", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/gmp2025-transition.git"}, {"id": "SK-125", "slug": "human-oversight-gate", "name": "human-oversight-gate", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/human-oversight-gate.git"}, {"id": "SK-126", "slug": "identity-verify", "name": "identity-verify", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/identity-verify.git"}, {"id": "SK-127", "slug": "iso14971-risk-matrix", "name": "iso14971-risk-matrix", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/iso14971-risk-matrix.git"}, {"id": "SK-128", "slug": "medical-device-clinical-evaluation", "name": "medical-device-clinical-evaluation", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/medical-device-clinical-evaluation.git"}, {"id": "SK-129", "slug": "medical-device-qms-gmp", "name": "medical-device-qms-gmp", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/medical-device-qms-gmp.git"}, {"id": "SK-130", "slug": "medical-device-reg-hub", "name": "medical-device-reg-hub", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/medical-device-reg-hub.git"}, {"id": "SK-131", "slug": "medical-device-samd", "name": "medical-device-samd", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/medical-device-samd.git"}, {"id": "SK-132", "slug": "product-reg-hub", "name": "product-reg-hub", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": false, "pub": "local", "url": null}, {"id": "SK-133", "slug": "product-termbase", "name": "product-termbase", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-134", "slug": "memory-hygiene-light", "name": "memory-hygiene-light", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/memory-hygiene-light.git"}, {"id": "SK-135", "slug": "publish-review-gate", "name": "publish-review-gate", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/publish-review-gate.git"}, {"id": "SK-136", "slug": "quality-checks", "name": "quality-checks", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/quality-checks.git"}, {"id": "SK-137", "slug": "quality-inspector", "name": "quality-inspector", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/quality-inspector.git"}, {"id": "SK-138", "slug": "reg-citation-normalizer", "name": "reg-citation-normalizer", "line": "L5 监管线", "lkey": "L5", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/reg-citation-normalizer.git"}, {"id": "SK-139", "slug": "release-gate-check", "name": "release-gate-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/release-gate-check.git"}, {"id": "SK-140", "slug": "security-supervisor", "name": "security-supervisor", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/security-supervisor.git"}, {"id": "SK-141", "slug": "session-distillation-ledger", "name": "session-distillation-ledger", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/session-distillation-ledger.git"}, {"id": "SK-142", "slug": "skill-release-gate", "name": "skill-release-gate", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/skill-release-gate.git"}, {"id": "SK-143", "slug": "summarize-pro", "name": "summarize-pro", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/summarize-pro.git"}, {"id": "SK-144", "slug": "symbiosis-expert-team", "name": "symbiosis-expert-team", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/symbiosis-expert-team.git"}, {"id": "SK-145", "slug": "theory-positioning-playbook", "name": "theory-positioning-playbook", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/theory-positioning-playbook.git"}, {"id": "SK-146", "slug": "traceability-audit-team", "name": "traceability-audit-team", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/traceability-audit-team.git"}, {"id": "SK-147", "slug": "udi-validator", "name": "udi-validator", "line": "L2 产品线", "lkey": "L2", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/udi-validator.git"}, {"id": "SK-148", "slug": "uibc-challenge", "name": "uibc-challenge", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-challenge.git"}, {"id": "SK-149", "slug": "uibc-team-aut", "name": "uibc-team-aut", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-aut.git"}, {"id": "SK-150", "slug": "uibc-team-bio", "name": "uibc-team-bio", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-bio.git"}, {"id": "SK-151", "slug": "uibc-team-crypt", "name": "uibc-team-crypt", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-crypt.git"}, {"id": "SK-152", "slug": "uibc-team-dat", "name": "uibc-team-dat", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-dat.git"}, {"id": "SK-153", "slug": "uibc-team-edu", "name": "uibc-team-edu", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-edu.git"}, {"id": "SK-154", "slug": "uibc-team-ene", "name": "uibc-team-ene", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-ene.git"}, {"id": "SK-155", "slug": "uibc-team-fin", "name": "uibc-team-fin", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-fin.git"}, {"id": "SK-156", "slug": "uibc-team-gov", "name": "uibc-team-gov", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-gov.git"}, {"id": "SK-157", "slug": "uibc-team-ind", "name": "uibc-team-ind", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-ind.git"}, {"id": "SK-158", "slug": "uibc-team-law", "name": "uibc-team-law", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-law.git"}, {"id": "SK-159", "slug": "uibc-team-med", "name": "uibc-team-med", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-med.git"}, {"id": "SK-160", "slug": "uibc-team-rob", "name": "uibc-team-rob", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-rob.git"}, {"id": "SK-161", "slug": "uibc-team-uas", "name": "uibc-team-uas", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/uibc-team-uas.git"}, {"id": "SK-162", "slug": "unified-credential-vault", "name": "unified-credential-vault", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/unified-credential-vault.git"}, {"id": "SK-163", "slug": "unified-task-ledger", "name": "unified-task-ledger", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/unified-task-ledger.git"}, {"id": "SK-164", "slug": "voice-arche", "name": "voice-arche", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-arche.git"}, {"id": "SK-165", "slug": "voice-didaskalos", "name": "voice-didaskalos", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-didaskalos.git"}, {"id": "SK-166", "slug": "voice-iatros", "name": "voice-iatros", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-iatros.git"}, {"id": "SK-167", "slug": "voice-krites", "name": "voice-krites", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-krites.git"}, {"id": "SK-168", "slug": "voice-lex", "name": "voice-lex", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-lex.git"}, {"id": "SK-169", "slug": "voice-logos", "name": "voice-logos", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-logos.git"}, {"id": "SK-170", "slug": "voice-nomos", "name": "voice-nomos", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-nomos.git"}, {"id": "SK-171", "slug": "voice-phylax", "name": "voice-phylax", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-phylax.git"}, {"id": "SK-172", "slug": "voice-pont", "name": "voice-pont", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": false, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/voice-pont.git"}, {"id": "SK-173", "slug": "zz-crlf-check", "name": "zz-crlf-check", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/zz-crlf-check.git"}, {"id": "SK-174", "slug": "zz-pipeline-smoke", "name": "zz-pipeline-smoke", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/zz-pipeline-smoke.git"}, {"id": "SK-175", "slug": "skill-registry", "name": "skill-registry", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-176", "slug": "silent-failure-scanner", "name": "silent-failure-scanner", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-177", "slug": "prompt-injection-guard", "name": "prompt-injection-guard", "line": "L3 评测线", "lkey": "L3", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-178", "slug": "badge-studio", "name": "badge-studio", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-179", "slug": "llms-generator", "name": "llms-generator", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-180", "slug": "skill-skeleton-generator", "name": "skill-skeleton-generator", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-181", "slug": "context-token-budget", "name": "context-token-budget", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-182", "slug": "lgd-skill-marketplace", "name": "lgd-skill-marketplace", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "local", "url": null}, {"id": "SK-183", "slug": "awesome-trusted-agents", "name": "awesome-trusted-agents", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-184", "slug": "lgd-guardrails", "name": "lgd-guardrails", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "local", "url": null}, {"id": "SK-185", "slug": "skill-scorecard", "name": "skill-scorecard", "line": "L6 基础设施线", "lkey": "L6", "ai": true, "exe": true, "pub": "local", "url": null}, {"id": "SK-186", "slug": "lgd-hub-upgrade", "name": "lgd-hub-upgrade", "line": "L1 理论线", "lkey": "L1", "ai": true, "exe": false, "pub": "local", "url": null}, {"id": "SK-187", "slug": "ai-voice-ambassadors", "name": "ai-voice-ambassadors", "line": "L4 生态线", "lkey": "L4", "ai": true, "exe": true, "pub": "ms", "url": "https://modelscope.cn/skills/StevenZhao26/ai-voice-ambassadors.git"}], "assets": [{"num": 1, "name": "silent-failure-catalog（静默失败目录）", "type": "工具链/数据集", "url": "https://github.com/zhaoxinghua09-cell/silent-failure-catalog.git", "license": "LICENSE （代码 MIT）+ LICENSE-CONTENT （正文 ARC）；CITATION.cff DOI=10.5281/zenodo.23301091", "repro": "git clone https://github.com/zhaoxinghua09-cell/silent-failure-catalog.git；python tools/check-catalog.py"}, {"num": 2, "name": "lgd-theory（LGD 理论栈主仓）", "type": "组织仓/文档站", "url": "https://github.com/zhaoxinghua09-cell/lgd-theory.git", "license": "LICENSE （CC-BY-4.0）；CITATION.cff DOI=10.5281/zenodo.22456647", "repro": "git clone https://github.com/zhaoxinghua09-cell/lgd-theory.git"}, {"num": 3, "name": "lgd-contributor-kit（贡献者工具包）", "type": "工具链", "url": "git@github.com:zhaoxinghua09-cell/LGD.git", "license": "LICENSE + NOTICE + CONTRIBUTING.md + CODE_OF_CONDUCT.md + SECURITY.md", "repro": "git clone git@github.com:zhaoxinghua09-cell/LGD.git"}, {"num": 4, "name": "assayance（独立评测工具）", "type": "工具链", "url": "https://github.com/zhaoxinghua09-cell/assayance.git", "license": "LICENSE + CITATION.cff + llms.txt", "repro": "git clone https://github.com/zhaoxinghua09-cell/assayance.git"}, {"num": 5, "name": "project-ops-protocol（项目运营协议技能）", "type": "技能包", "url": "https://github.com/zhaoxinghua09-cell/project-ops-protocol.git", "license": "LICENSE + SKILL.md + README.md", "repro": "git clone https://github.com/zhaoxinghua09-cell/project-ops-protocol.git"}, {"num": 6, "name": "skill-registry（技能注册表）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/（目录已列）；远端待登记"}, {"num": 7, "name": "silent-failure-scanner（静默失败扫描器）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 8, "name": "prompt-injection-guard（提示注入防护）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 9, "name": "badge-studio（徽章工坊）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 10, "name": "llms-generator（llms.txt 生成器）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 11, "name": "skill-skeleton-generator（技能骨架生成器）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 12, "name": "context-token-budget（上下文 token 预算）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "本地：python scripts/"}, {"num": 13, "name": "skill-quality-gate（技能质量门禁）", "type": "技能包", "url": null, "license": "LICENSE + SKILL.md + README.md + AGENTS.md", "repro": "git clone https://modelscope.cn/skills/StevenZhao26/skill-quality-gate.git"}, {"num": 14, "name": "lgd-skill-marketplace（LGD 技能市场索引）", "type": "市场索引", "url": null, "license": "LICENSE + README.md + AGENTS.md + llms.txt + index.json", "repro": "本地：index.json"}, {"num": 15, "name": "awesome-trusted-agents（可信 Agent 精选清单）", "type": "市场索引", "url": null, "license": "LICENSE + README.md + AGENTS.md", "repro": "本地：python gen_readme.py"}, {"num": 16, "name": "lgd-guardrails（LGD 护栏视觉/GIF）", "type": "技能包/视觉资产", "url": null, "license": "LICENSE + README.md + AGENTS.md + CLAUDE.md", "repro": "本地：assets/"}, {"num": 18, "name": "lgd-demo-organization（示范组织仓）", "type": "组织仓", "url": "https://gitee.com/stevenzhao26/lgd-demo-organization.git", "license": "LICENSE （MIT）+ README.md （双语）+ AGENTS.md + **SECURITY.md （4,353B，本轮新增）** + **demo （CHG-028 归口）** + gates+ ；.git/config 内嵌 gitee user:password 已清除；双远端同 head **b666d20a4af519a5e0be93fbbfbba5dec747bf38**", "repro": "git clone https://gitee.com/stevenzhao26/lgd-demo-organization.git"}, {"num": 25, "name": "评测体系公开版（规范 v2 / 解读模板 / 徽章包 / 公开报告）", "type": "评测体系", "url": null, "license": "LICENSE 627B 已附；公开规范文件 9 份", "repro": "本地：README.md 入口；公开件 9 份已去敏"}, {"num": 35, "name": "ModelScope 技能仓集群（_ms_git）", "type": "技能包集群", "url": "https://modelscope.cn/skills/StevenZhao26/<repo>.git", "license": "各仓自带 LICENSE（本轮集群补 LICENSE×134 / README×52 / AGENTS×2 后达标）", "repro": "git clone https://modelscope.cn/skills/StevenZhao26/<repo>.git"}, {"num": 36, "name": "ModelScope 技能仓集群（_ms_clone + _ms_clone2）", "type": "技能包集群", "url": "https://modelscope.cn/skills/StevenZhao26/<repo>.git", "license": "各仓自带 LICENSE（本轮补全后达标）", "repro": "git clone https://modelscope.cn/skills/StevenZhao26/<repo>.git"}, {"num": 39, "name": "SECURITY.md（示范仓安全策略）", "type": "安全策略", "url": null, "license": "随仓 MIT", "repro": ""}, {"num": 40, "name": "demo/（AI 自主×可插拔交互演示页）", "type": "演示/前端", "url": null, "license": "随仓 MIT", "repro": "浏览器直接打开"}, {"num": 41, "name": "Zenodo 论文记录（四角度证据门禁评分）", "type": "论文/预印本", "url": "https://zenodo.org/record/23406857", "license": "cc-by-4.0；**PDF 未附（无 LaTeX 工具链，待补传）**", "repro": "https://zenodo.org/record/23406857"}, {"num": 43, "name": "CITATION.cff（论文引用元数据）", "type": "引用元数据", "url": null, "license": "cc-by-4.0（随 Zenodo 记录 #41）", "repro": "https://zenodo.org/record/23406857"}]};
+
+var LINE_LABEL = {
+  "L1 理论线":"L1 · Theory 理论线",
+  "L2 产品线":"L2 · Product 产品线",
+  "L3 评测线":"L3 · Evaluation 评测线",
+  "L4 生态线":"L4 · Ecosystem 生态线",
+  "L5 监管线":"L5 · Compliance 监管线",
+  "L6 基础设施线":"L6 · Infrastructure 基础设施线"
+};
+var LINE_COLOR = {"L1 理论线":"var(--l1)","L2 产品线":"var(--l2)","L3 评测线":"var(--l3)","L4 生态线":"var(--l4)","L5 监管线":"var(--l5)","L6 基础设施线":"var(--l6)"};
+var LINE_CLASS = {"L1 理论线":"l1","L2 产品线":"l2","L3 评测线":"l3","L4 生态线":"l4","L5 监管线":"l5","L6 基础设施线":"l6"};
+
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+
+// ---- stat strip ----
+var st = DATA.stats;
+var stats = [
+  [st.total,"Packages · 技能包"],
+  [Object.keys(st.lines).length,"Practice lines · 业务线"],
+  [st.ai_ready,"AI-protocol ready · 协议达标"],
+  [st.executable,"With scripts · 含可执行脚本"],
+  [st.ms_published,"Published on ModelScope · 已发布"],
+  [st.assets_len||DATA.assets.length,"Public assets · 公开资产"]
+];
+document.getElementById('statstrip').innerHTML = stats.map(function(s){
+  return '<div class="stat"><b>'+s[0]+'</b><span>'+esc(s[1])+'</span></div>';
+}).join('');
+
+// ---- bars ----
+var lineNames = Object.keys(st.lines);
+var maxV = Math.max.apply(null, lineNames.map(function(k){return st.lines[k];}));
+document.getElementById('bars').innerHTML = lineNames.map(function(k){
+  var v = st.lines[k];
+  var pct = Math.round(v*100/maxV);
+  return '<div class="brow"><span class="bl">'+esc(LINE_LABEL[k]||k)+'</span>'
+    + '<span class="btrack"><span class="bfill" style="width:'+Math.max(pct,3)+'%;background:'+LINE_COLOR[k]+'"></span></span>'
+    + '<span class="bv">'+v+'</span></div>';
+}).join('');
+
+// ---- filters ----
+var state = {line:"all", ai:"all", exe:"all", q:""};
+
+var linePills = document.getElementById('fltLine');
+var lineBtns = ['all'].concat(lineNames);
+linePills.innerHTML = lineBtns.map(function(k){
+  var label = k==='all' ? 'All lines · 全部线' : (LINE_LABEL[k]||k);
+  return '<button data-l="'+esc(k)+'" class="'+(k==='all'?'on':'')+'">'+esc(label)+'</button>';
+}).join('');
+linePills.addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  state.line = b.getAttribute('data-l');
+  Array.prototype.forEach.call(linePills.children,function(x){x.classList.remove('on');});
+  b.classList.add('on'); render();
+});
+
+document.querySelector('.pills [data-g="ai"]').closest('.pills').addEventListener('click', pillHandler('ai'));
+document.querySelector('.pills [data-g="exe"]').closest('.pills').addEventListener('click', pillHandler('exe'));
+function pillHandler(g){
+  return function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    state[g] = b.getAttribute('data-v');
+    Array.prototype.forEach.call(this.children,function(x){
+      if(x.tagName==='BUTTON') x.classList.remove('on');
+    });
+    b.classList.add('on'); render();
+  };
+}
+document.getElementById('q').addEventListener('input', function(e){ state.q = e.target.value.trim().toLowerCase(); render(); });
+
+function pubCell(s){
+  if(s.url){
+    var label = 'Open · 打开';
+    if(s.url.indexOf('github.com')>=0) label='GitHub ↗';
+    else if(s.url.indexOf('modelscope.cn')>=0) label='ModelScope ↗';
+    else if(s.url.indexOf('gitee.com')>=0) label='Gitee ↗';
+    else if(s.url.indexOf('zenodo.org')>=0) label='Zenodo ↗';
+    else if(s.url.indexOf('git@')===0) label='SSH ↗';
+    return '<a class="pub-link" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+label+'</a>';
+  }
+  return '<span class="pub-pending">Local ready · 本地就绪待发布</span>';
+}
+
+function render(){
+  var rows = DATA.skills.filter(function(s){
+    if(state.line!=='all' && s.line!==state.line) return false;
+    if(state.ai==='yes' && !s.ai) return false;
+    if(state.ai==='no' && s.ai) return false;
+    if(state.exe==='yes' && !s.exe) return false;
+    if(state.exe==='no' && s.exe) return false;
+    if(state.q && (s.id+' '+s.slug+' '+s.name).toLowerCase().indexOf(state.q)<0) return false;
+    return true;
+  });
+  document.getElementById('tbody').innerHTML = rows.map(function(s){
+    return '<tr>'
+      + '<td class="id" data-l="ID">'+s.id+'</td>'
+      + '<td data-l="Package"><span class="nm">'+esc(s.name)+'</span><span class="slug">'+esc(s.slug)+'</span></td>'
+      + '<td data-l="Line"><span class="pill '+LINE_CLASS[s.line]+'">'+esc((LINE_LABEL[s.line]||s.line).split(' ')[0])+'</span></td>'
+      + '<td data-l="AI protocol">'+(s.ai?'<span class="badge b-ok">Ready</span>':'<span class="badge b-no">Pending</span>')+'</td>'
+      + '<td data-l="Executable">'+(s.exe?'<span class="badge b-ok">Yes</span>':'<span class="badge b-no">No</span>')+'</td>'
+      + '<td class="pub-cell" data-l="Public entry">'+pubCell(s)+'</td>'
+      + '</tr>';
+  }).join('');
+  document.getElementById('countline').textContent =
+    'Showing '+rows.length+' of '+DATA.skills.length+' packages · 显示 '+rows.length+' / '+DATA.skills.length+' 个技能包';
+}
+render();
+
+// ---- assets ----
+document.getElementById('acards').innerHTML = DATA.assets.map(function(a){
+  var urlHtml = a.url
+    ? '<a class="aurl" href="'+esc(a.url)+'" target="_blank" rel="noopener">'+esc(a.url)+'</a>'
+    : '<span class="aurl" style="color:var(--muted)">Remote URL pending · 远程地址待登记</span>';
+  return '<div class="acard">'
+    + '<div class="atop"><span class="an">#'+a.num+'</span><span class="at">'+esc(a.name)+'</span></div>'
+    + '<span class="aty">'+esc(a.type)+'</span>'
+    + urlHtml
+    + (a.license ? '<span class="ameta">License · 许可：'+esc(a.license)+'</span>' : '')
+    + (a.repro ? '<span class="arepro">$ '+esc(a.repro.replace(/^git clone /,'git clone '))+'</span>' : '')
+    + '</div>';
+}).join('');
+</script>
+</body>
+</html>
