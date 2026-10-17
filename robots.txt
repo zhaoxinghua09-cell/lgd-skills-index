@@ -1,0 +1,6 @@
+# robots.txt for LGD Skills Index
+# NOTE: <SITE_URL> is a planned deployment URL, NOT yet confirmed online.
+# 拟定部署 URL 待用户/主代理确认后替换：https://zhaoxinghua09-cell.github.io/lgd-skills-index/
+User-agent: *
+Allow: /
+Sitemap: https://zhaoxinghua09-cell.github.io/lgd-skills-index/sitemap.xml
