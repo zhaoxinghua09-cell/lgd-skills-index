@@ -116,6 +116,7 @@ lgd-skills-index/
 ├── llms-full.txt        # 给 AI 的完整文本
 ├── AGENTS.md            # 给 AI Agent 的工作指引
 ├── SECURITY.md          # 安全策略
+├── LICENSE-CONTENT      # 内容许可（ARR + 注明出处可引用）
 └── CONTRIBUTING.md      # 贡献 / 勘误指引
 ```
 
@@ -141,9 +142,9 @@ lgd-skills-index/
 
 ## License / 许可
 
-**本仓库当前未附 LICENSE 文件。** 仓库内 `index.html` 所登记的每个技能包 / 资产各自带有其独立许可证（例如 ModelScope 上的各技能仓、`silent-failure-catalog` 的 MIT + ARC、`lgd-theory` 的 CC-BY-4.0 等），本索引站本身不主张任何额外的著作权或许可口径。
+**本索引站内容采用「保留所有权利（All Rights Reserved）+ 注明出处可引用」口径，详见 [LICENSE-CONTENT](LICENSE-CONTENT)。** 仓库内 `index.html` 所登记的每个技能包 / 资产各自带有其独立许可证（例如 ModelScope 上的各技能仓、`silent-failure-catalog` 的 MIT + ARR、`lgd-theory` 的 CC-BY-4.0 等），本许可不覆盖那些外部资产。
 
-在引用、转载或基于本站数据做二次分发前，请先联系维护者确认口径（见下方安全 / 贡献段邮箱），不要臆定本索引站的授权状态。
+在引用、转载或基于本站数据做二次分发前，请按 LICENSE-CONTENT 的引用格式注明出处（或先联系维护者确认口径，见下方安全 / 贡献段邮箱），不要臆定本索引站的授权状态。
 
 ## ⚠️ 免责声明
 
