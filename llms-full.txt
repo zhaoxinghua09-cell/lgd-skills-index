@@ -1,0 +1,60 @@
+# LGD Skills Ecosystem Registry (lgd-skills-index) — 完整文本 / Full text
+
+本文件为 llms.txt 标准的「完整版」，供长上下文模型一次性读取本仓库的完整说明。
+This is the llms.txt "full" version, for long-context models.
+
+## 这是什么 / What it is
+
+`lgd-skills-index` 是一个 **纯静态 GitHub Pages 注册站仓**（无后端、无构建步骤、无 npm 依赖）。根目录 `index.html` 即整站：内嵌一份 `DATA` JSON（187 个技能包注册表 + 公开资产清单），由浏览器端原生 JavaScript 渲染统计条、业务线占比、可搜索筛选的技能表与公开资产卡片。
+
+一句话：一个面向治理的 Agent 技能生态的统一双语入口，把 187 个技能包按六条业务线聚合、去敏、机器可读地公开登记。
+
+## 解决什么问题 / What it solves
+
+1. 187 个技能包分散在 ModelScope / GitHub / 本地暂存，缺一个统一、可搜索、双语的入口。
+2. 想一眼看出哪些包已公开发布、哪些含可执行脚本、哪些尚待发布——不靠猜。
+3. 公开链接必须真实：只展示已核对过远端 URL 的条目，待发布的标中性标签，不编造链接。
+4. 需要机器可读数据与 SEO（robots.txt / sitemap.xml），便于 AI 与搜索引擎发现。
+
+## 六条业务线 / Six practice lines
+
+- L1 理论线 Theory：38
+- L2 产品线 Product：22
+- L3 评测线 Evaluation：12
+- L4 生态线 Ecosystem：8
+- L5 监管线 Compliance：13
+- L6 基础设施线 Infrastructure：94
+
+关键统计（快照 2026-10-16）：总数 187；AI 协议达标 187/187；含可执行脚本 142；已发布到公开 ModelScope 152；本地就绪待发布 35。
+
+## 快速开始 / Quick start
+
+```bash
+git clone https://github.com/zhaoxinghua09-cell/lgd-skills-index.git
+cd lgd-skills-index
+start index.html     # 或直接访问 https://zhaoxinghua09-cell.github.io/lgd-skills-index/
+```
+
+抽取内嵌注册表做统计：
+
+```bash
+python - <<'PY'
+import re, json
+html = open('index.html', encoding='utf-8').read()
+data = json.loads(re.search(r'var DATA = (\{.*?\});\s*\nvar LINE_LABEL', html, re.S).group(1))
+print(data['stats'])
+PY
+```
+
+## 触发词 / Trigger words
+
+技能注册表 / 技能索引 / agent skill registry / skill index / 公开技能合集 / governance skill list / modelscope skill registry / 双语注册站。
+
+## 许可与权利 / License & rights
+
+**本仓库当前未附 LICENSE 文件。** 站内登记的每个技能包 / 资产各自带独立许可证，本索引站不主张额外著作权或许可口径；引用或二次分发前请联系维护者确认。安全报告邮箱：zhaoxinghua06@126.com。
+
+## 链接 / Links
+
+- 仓库: https://github.com/zhaoxinghua09-cell/lgd-skills-index
+- 在线站: https://zhaoxinghua09-cell.github.io/lgd-skills-index/

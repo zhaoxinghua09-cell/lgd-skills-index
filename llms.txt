@@ -1,0 +1,25 @@
+# LGD Skills Ecosystem Registry (lgd-skills-index)
+
+> A zero-dependency, bilingual static GitHub Pages registry: one open entry point to 187 governance-oriented agent skill packages across six practice lines, with search, filters and machine-readable data.
+
+`lgd-skills-index` is a **static-site repository** (no backend, no build step). The root `index.html` is the whole site and embeds a `DATA` JSON (skill registry + public-asset list) rendered by vanilla browser-side JavaScript. Data snapshot: 2026-10-16.
+
+## Core
+
+- [index.html](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/index.html): the live site entry; embeds the 187-package registry and public-asset cards
+- [README.md](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/README.md): bilingual project description and quick start
+- [README.en.md](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/README.en.md): English readme
+- [robots.txt](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/robots.txt): crawler rules + sitemap pointer
+- [sitemap.xml](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/sitemap.xml): sitemap
+
+## Optional
+
+- [AGENTS.md](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/AGENTS.md): working guide for AI agents
+- [llms-full.txt](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/llms-full.txt): full text for long-context models
+- [SECURITY.md](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/SECURITY.md): security policy
+- [CONTRIBUTING.md](https://github.com/zhaoxinghua09-cell/lgd-skills-index/blob/main/CONTRIBUTING.md): errata / contribution guide
+
+## Online
+
+- Live site: https://zhaoxinghua09-cell.github.io/lgd-skills-index/
+- Registry source snapshot: 2026-10-16 (187 packages, SK-001–SK-187)
