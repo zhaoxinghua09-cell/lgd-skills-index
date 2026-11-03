@@ -1,4 +1,5 @@
 # LGD Skills Ecosystem Registry · 技能生态聚合索引站
+[![Trust Score](https://img.shields.io/badge/Trust%20Score-80%2F100%20A-2ea44f.svg)](https://github.com/zhaoxinghua09-cell/skillgate)
 
 [![Made for GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-static--site-0078d4.svg)](https://zhaoxinghua09-cell.github.io/lgd-skills-index/)
 [![Bilingual](https://img.shields.io/badge/i18n-English%20%7C%20中文-brightgreen.svg)](#)
@@ -149,3 +150,12 @@ lgd-skills-index/
 ## ⚠️ 免责声明
 
 本页内容为公开技能生态的聚合登记与转述，不构成对任何具体技能包质量、合规性或可用性的担保；页面所列外部链接、许可证与下载量均以来源索引快照（2026-10-16）为准，正式引用前请独立核实。本仓不含、也不夹带任何可执行的后端逻辑。
+
+## Ecosystem / 生态闭环
+
+- [awesome-trusted-agents](https://github.com/zhaoxinghua09-cell/awesome-trusted-agents) — 四角度评分精选清单（生态榜单入口）
+- [skill-scorecard](https://github.com/zhaoxinghua09-cell/skill-scorecard) — 四角度评分引擎
+- [lgd-hub](https://github.com/zhaoxinghua09-cell/lgd-hub) — LGD 理论资产统一入口
+- [lgd-skill-marketplace](https://github.com/zhaoxinghua09-cell/lgd-skill-marketplace) — LGD 技能超市总目录
+- [governanceos](https://github.com/zhaoxinghua09-cell/governanceos) — 治理编排枢纽（SPEC→PLAN→GATE→AUDIT→EVO）
+- [skillgate](https://github.com/zhaoxinghua09-cell/skillgate) — 技能信任评分引擎
