@@ -157,7 +157,7 @@ footer b{color:#E9E4D8}
     <div class="tblwrap">
       <table>
         <colgroup><col class="c-id"><col class="c-pkg"><col class="c-line"><col class="c-ai"><col class="c-exe"><col class="c-pub"></colgroup>
-        <thead><tr><th>ID</th><th>Package</th><th>Practice line</th><th>AI protocol</th><th>Executable</th><th>Public entry</th></tr></thead>
+        <thead><tr><th>ID</th><th>Package</th><th>Practice line</th><th>AI protocol</th><th>Executable</th><th>评测</th><th>Public entry</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
@@ -320,12 +320,20 @@ function render(){
     if(state.q && (s.id+' '+s.slug+' '+s.name).toLowerCase().indexOf(state.q)<0) return false;
     return true;
   });
-  document.getElementById('tbody').innerHTML = rows.map(function(s){
+  
+function evalCell(s){
+  var e = s.eval || {};
+  if(!e || e.state === 'NV' || e.score == null) return '<span class="badge b-no">NV</span>';
+  var cls = (e.critical > 0) ? 'b-no' : (e.score >= 90 ? 'b-ok' : 'b-no');
+  return '<span class="badge '+cls+'" title="E2 · author-reproducible">'+esc(e.grade)+' · '+e.score+'</span>';
+}
+document.getElementById('tbody').innerHTML = rows.map(function(s){
     return '<tr>'
       + '<td class="id" data-l="ID">'+s.id+'</td>'
       + '<td data-l="Package"><span class="nm">'+esc(s.name)+'</span><span class="slug">'+esc(s.slug)+'</span></td>'
       + '<td data-l="Line"><span class="pill '+LINE_CLASS[s.line]+'">'+esc((LINE_LABEL[s.line]||s.line).split(' ')[0])+'</span></td>'
       + '<td data-l="AI protocol">'+(s.ai?'<span class="badge b-ok">Ready</span>':'<span class="badge b-no">Pending</span>')+'</td>'
+      + '<td data-l="评测">'+evalCell(s)+'</td>'
       + '<td data-l="Executable">'+(s.exe?'<span class="badge b-ok">Yes</span>':'<span class="badge b-no">No</span>')+'</td>'
       + '<td class="pub-cell" data-l="Public entry">'+pubCell(s)+'</td>'
       + '</tr>';
