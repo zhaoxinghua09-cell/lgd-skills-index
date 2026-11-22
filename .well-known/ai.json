@@ -1,0 +1,12 @@
+{
+  "schema": "ai-manifest/v1",
+  "repository": "zhaoxinghua09-cell/lgd-skills-index",
+  "role": "Skill distribution repo: publishes a skill index with sha256 digests.",
+  "what_it_is": "Open LLM registry of AI agent packages - LGD skills index: bilingual registry of the public skill collection. LGD 技能索引站：公开技能合集双语注册总览.",
+  "what_it_is_not": "Not a third-party certification, compliance finding, or regulatory approval. Claims about quality are the author's own and separately labelled.",
+  "reproduce": "See the repository README for how to run or read the material; commands are verbatim and require no private network.",
+  "contact": "zhaoxinghua09-cell",
+  "evidence_state": "Machine-generated manifest, 2026-11-22. Descriptive fields mirror the repository description verbatim; no quality claim is asserted here.",
+  "last_verified": "2026-11-22",
+  "claims_policy": "No first-in-class, greenfield, or only-implementation claims. Each comparison states its own boundary."
+}
